@@ -43,7 +43,8 @@ namespace NBD_ClientManagementGood.Models
         public virtual ICollection<DesignBudget> DesignBudgets { get; set; }
         public virtual ICollection<DesignDaily> DesignDailies { get; set; }
         public virtual ICollection<LabourReport> LabourReports { get; set; }
-        public virtual ICollection<ProductionWorkReport> ProductionWorkReports { get; set; }
+        public virtual ICollection<ProDLabour> ProDLabours { get; set; }
+        public virtual ICollection<ProDMaterial> ProDMaterials { get; set; }
         public virtual ICollection<BidStageReport> BidStageReports { get; set; }
         public virtual ICollection<ProductionStageReport> ProductionStageReports { get; set; }
 

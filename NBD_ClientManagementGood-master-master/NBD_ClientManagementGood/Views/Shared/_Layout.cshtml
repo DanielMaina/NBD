@@ -71,17 +71,6 @@
                                 </div>
                             </li>
                         }
-                        @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Inventory@*<b class="caret"></b>
-        </a>
-        <div class="dropdown-menu text-dark" aria-labelledby="navbarDropdown">
-            <a class="nav-link" asp-area="" asp-controller="Tools" asp-action="Index">Tool</a>
-            <a class="nav-link" asp-area="" asp-controller="Materials" asp-action="Index">Material</a>
-            <a class="nav-link" asp-area="" asp-controller="Potteries" asp-action="Index">Pottery</a>
-            <a class="nav-link" asp-area="" asp-controller="Plants" asp-action="Index">Plant</a>
-        </div>
-        </li>*@
                         @if (User.IsInRole("Admin") || (User.IsInRole("Assistant")) || (User.IsInRole("Supervisor")))
                         {
                             <li class="nav-item dropdown">
@@ -119,7 +108,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     User Management Menu<b class="caret"></b>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
