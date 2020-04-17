@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NBD_ClientManagementGood.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="text-success">
+        <div class="text-center">
+            <h1>Projects</h1>
+            <p>
+                <a asp-action="Create" class="btn btn-outline-success">Create New Project</a>
+            </p>
+        </div>
+        <hr />
+        <table class="table table-hover table-bordered bg-success">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EndDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Client)
+                    </th>
+                    <th>
+                        Options
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EndDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Client.FormalName)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-success">Update</a>
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-outline-success">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>

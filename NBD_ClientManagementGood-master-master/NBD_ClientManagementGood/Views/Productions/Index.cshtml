@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NBD_ClientManagementGood.Models.Production>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProBidPercent)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.meme)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Bid)
+            </th>
+            <th>
+                Labour
+            </th>
+            <th>
+                Items
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProBidPercent)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.meme)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Bid.BlueprintCode)
+            </td>
+            <td>
+                @foreach (var s in item.Labour)
+                {
+                    @s.LabourUnit.Description <br />
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                @*<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

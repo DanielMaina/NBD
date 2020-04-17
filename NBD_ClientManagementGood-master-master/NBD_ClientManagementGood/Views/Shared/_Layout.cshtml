@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Client Management</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-white">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light bg-success border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">NBD</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"> 
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Projects" asp-action="Index">Projects</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || (User.IsInRole("Supervisor")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Inventory</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Bids" asp-action="Index">Bids</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Assistant") || (User.IsInRole("Supervisor")))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Productions" asp-action="Index">Productions</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Assistant") || (User.IsInRole("Supervisor")))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Labour@*<b class="caret"></b>*@
+                                </a>
+                                <div class="dropdown-menu text-dark" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link" asp-area="" asp-controller="LabourDepartments" asp-action="Index">Team Creation</a>
+                                    <a class="nav-link" asp-area="" asp-controller="LabourUnits" asp-action="Index">Labour Unit</a>
+                                </div>
+                            </li>
+                        }
+                        @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Inventory@*<b class="caret"></b>
+        </a>
+        <div class="dropdown-menu text-dark" aria-labelledby="navbarDropdown">
+            <a class="nav-link" asp-area="" asp-controller="Tools" asp-action="Index">Tool</a>
+            <a class="nav-link" asp-area="" asp-controller="Materials" asp-action="Index">Material</a>
+            <a class="nav-link" asp-area="" asp-controller="Potteries" asp-action="Index">Pottery</a>
+            <a class="nav-link" asp-area="" asp-controller="Plants" asp-action="Index">Plant</a>
+        </div>
+        </li>*@
+                        @if (User.IsInRole("Admin") || (User.IsInRole("Assistant")) || (User.IsInRole("Supervisor")))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reports@*<b class="caret"></b>*@
+                                </a>
+                                <div class="dropdown-menu text-dark" aria-labelledby="navbarDropdown">
+                                    @if (User.IsInRole("Assistant"))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="LabourReports" asp-action="Index">Labour Reports</a>
+                                    }
+                                    @if (User.IsInRole("Assistant"))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="DesignDailies" asp-action="Index">Design Dailies</a>
+                                    }
+                                    @if (User.IsInRole("Assistant") || (User.IsInRole("Supervisor")))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="DesignBudgets" asp-action="Index">Design Budgets</a>
+                                    }
+                                    @if (User.IsInRole("Assistant"))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="ProductionWorkReports" asp-action="Index">Production Work Reports</a>
+                                    }
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Assistant")) || (User.IsInRole("Supervisor")))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="BidStageReports" asp-action="Index">Bid Stage Reports</a>
+                                    }
+                                    @if (User.IsInRole("Admin") || (User.IsInRole("Assistant")) || (User.IsInRole("Supervisor")))
+                                    {
+                                        <a class="nav-link" asp-area="" asp-controller="ProductionStageReports" asp-action="Index">Production Stage Reports</a>
+                                    }
+                                </div>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    User Management Menu<b class="caret"></b>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Register User</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Staffs" asp-action="Index">Manage Employees</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="UserRoles" asp-action="Index">Security Roles</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-light bg-success">
+        <div class="container">
+            &copy; 2020 - Natural By Design (NBD)
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

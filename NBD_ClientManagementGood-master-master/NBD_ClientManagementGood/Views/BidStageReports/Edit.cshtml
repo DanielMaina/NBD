@@ -1,0 +1,69 @@
+﻿@model NBD_ClientManagementGood.Models.BidStageReport
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BidStageReport</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="EstBID" class="control-label"></label>
+                <input asp-for="EstBID" class="form-control" />
+                <span asp-validation-for="EstBID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hours" class="control-label"></label>
+                <input asp-for="Hours" class="form-control" />
+                <span asp-validation-for="Hours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstHours" class="control-label"></label>
+                <input asp-for="EstHours" class="form-control" />
+                <span asp-validation-for="EstHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Costs" class="control-label"></label>
+                <input asp-for="Costs" class="form-control" />
+                <span asp-validation-for="Costs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstCost" class="control-label"></label>
+                <input asp-for="EstCost" class="form-control" />
+                <span asp-validation-for="EstCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoursRemaining" class="control-label"></label>
+                <input asp-for="HoursRemaining" class="form-control" />
+                <span asp-validation-for="HoursRemaining" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostsRemaining" class="control-label"></label>
+                <input asp-for="CostsRemaining" class="form-control" />
+                <span asp-validation-for="CostsRemaining" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectID" class="control-label"></label>
+                <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.ProjectID"></select>
+                <span asp-validation-for="ProjectID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,5 @@
+Add-Migration -Context NBD_ClientManagementGoodContext -o Data/CMOMigrations init
+Add-Migration -Context ApplicationDbContext -o Data/CMOMigrations identity
+Remove-Migration -Context NBD_ClientManagementGoodContext
+Update-Database -Context ApplicationDbContext *Do first*
+Update-Database -Context NBD_ClientManagementGoodContext

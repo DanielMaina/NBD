@@ -1,0 +1,80 @@
+﻿@model NBD_ClientManagementGood.Models.Bid
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <div class="text-dark bg-white">
+        <div class="text-center">
+            <h1>Create new bid</h1>
+
+            <h4>Bid information</h4>
+        </div>
+
+            
+            <hr />
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <form asp-action="Create" class="col-sm-6">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="BlueprintCode" class="control-label"></label>
+                        <input asp-for="BlueprintCode" class="form-control" value="A6B5C4D3E2F1" />
+                        <span asp-validation-for="BlueprintCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EstStart" class="control-label"></label>
+                        <input asp-for="EstStart" class="form-control" value="2020-02-31" />
+                        <span asp-validation-for="EstStart" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EstEnd" class="control-label"></label>
+                        <input asp-for="EstEnd" class="form-control" value="2020-04-20" />
+                        <span asp-validation-for="EstEnd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" class="form-control" value="999.44" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Location" class="control-label"></label>
+                        <input asp-for="Location" class="form-control" value="Everywhere" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProjectID" class="control-label"></label>
+                        <select asp-for="ProjectID" class="form-control" asp-items="ViewBag.ProjectID"></select>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-success" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label"> Items used</label> <button type="button" id="btnRight" class="btn btn-danger btn-sm">
+                                    <strong>-</strong>
+                                </button>
+                                @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @size = 10, @class = "form-control" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="control-label"> Choose Item</label> <button type="button" id="btnLeft" class="btn btn-success btn-sm">
+                                    <strong>+</strong>
+                                </button>
+                                @Html.ListBox("availOptions", (MultiSelectList)ViewBag.availOpts, new { @size = 10, @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="float:left;width:330px;">
+                        <input type="submit" id="btnSubmit" value="Save" style="float:right;margin-left:10px;" class="btn btn-success" />
+                        <a asp-action="Index" style="float:right;" class="btn btn-success">Back to List </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script src="~/js/multiselect.js"></script>
+        }

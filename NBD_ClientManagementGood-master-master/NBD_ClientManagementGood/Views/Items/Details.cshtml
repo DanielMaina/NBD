@@ -1,0 +1,62 @@
+﻿@model NBD_ClientManagementGood.Models.Item
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+    <div class="text-success">
+        <div class="text-center">
+            <h1>Item Details</h1>
+        </div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Size)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Size)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Qty)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Qty)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Net)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Net)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TotalCost)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DeliveryDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.InstallDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InstallDate)
+            </dd>
+        </dl>
+    </div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-outline-success">Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-success">Back to List</a>
+</div>

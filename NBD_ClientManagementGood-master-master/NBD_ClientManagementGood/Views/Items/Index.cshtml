@@ -1,0 +1,75 @@
+﻿@model IEnumerable<NBD_ClientManagementGood.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center text-success">
+        <h1>Items</h1>
+        <p>
+            <a asp-action="Create" class="btn btn-outline-success">Create New Item</a>
+        </p>
+</div>
+<table class="table table-hover table-bordered bg-success">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Net)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstallDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Net)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-success">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-outline-success">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-outline-success">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
