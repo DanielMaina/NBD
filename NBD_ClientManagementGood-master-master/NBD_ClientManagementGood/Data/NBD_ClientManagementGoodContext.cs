@@ -36,8 +36,11 @@ namespace NBD_ClientManagementGood.Data
         public DbSet<DesignDaily> DesignDaily { get; set; }
         public DbSet<DesignBudget> DesignBudget { get; set; }
         public DbSet<ProductionWorkReport> ProductionWorkReport { get; set; }
+        public DbSet<ProDLabour> ProDLabour { get; set; }
+        public DbSet<ProDMaterial> ProDMaterial { get; set; }
         public DbSet<ProductionStageReport> ProductionStageReports { get; set; }
         public DbSet<BidStageReport> BidStageReports { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using NBD_ClientManagementGood.Models;
 
 namespace NBD_ClientManagementGood.Controllers
 {
+    [Authorize(Roles = "Assistant,Supervisor")]
     public class ProDLaboursController : Controller
     {
         private readonly NBD_ClientManagementGoodContext _context;
